@@ -34,7 +34,7 @@ const funcFibonacci = async (
 };
 
 export const FibonacciConponent: React.FC = () => {
-  const [inputValue, setInputValue] = React.useState<string>();
+  const [inputValue, setInputValue] = React.useState<string>('');
 
   const [loader, setLoader] = React.useState<boolean>(false);
 
