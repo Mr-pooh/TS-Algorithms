@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    max-height: 100%;
+    flex-direction: column;
+    row-gap: 48px
+}
+
+.selections {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 52px;
+}
+
+.radioInput {
+ display: flex;
+ column-gap: 40px;
+}
+
+.buttons {
+    display: flex;
+    column-gap: 80px;
+}
+
+.selectionsButtons {
+    display: flex;
+    column-gap: 12px;
+}
+
+.containTabble {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: row;
+    padding-inline-start: 0;
+    list-style-type: none;
+    column-gap: 10px;
+}
+
+.elementTabble {
+
+}
