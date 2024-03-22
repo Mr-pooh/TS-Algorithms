@@ -1,8 +1,6 @@
 import React, {
   ChangeEvent,
-  Dispatch,
   FormEventHandler,
-  SetStateAction,
   useState,
 } from "react";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
@@ -12,42 +10,7 @@ import styles from "./string.module.css";
 import { Circle } from "../ui/circle/circle";
 import { DELAY_IN_MS, delay } from "../../constants/delays";
 import { ElementStates } from "../../types/element-states";
-
-type TArray = {
-  value: string;
-  color: ElementStates;
-};
-
-const reverseElement = async (
-  arr: TArray[],
-  setLoader: Dispatch<SetStateAction<boolean>>,
-  setArrElements: Dispatch<SetStateAction<TArray[]>>
-) => {
-  setArrElements([...arr])
-  await delay(DELAY_IN_MS)
-  setLoader(true);
-  let start = 0;
-  let end = arr.length - 1;
-  while (start <= end) {
-    if (start <= end) {
-      arr[start].color = ElementStates.Changing;
-      arr[end].color = ElementStates.Changing;
-      setArrElements([...arr]);
-      [arr[start], arr[end]] = [arr[end], arr[start]];
-      start++;
-      end--;
-      await delay(DELAY_IN_MS);
-      arr[start - 1].color = ElementStates.Modified;
-      arr[end + 1].color = ElementStates.Modified;
-      setArrElements([...arr])
-    }  else {
-      await delay(DELAY_IN_MS);
-      return 
-    }
-    
-  }
-  setLoader(false);
-};
+import { TArray, reverseElement } from "./stringFunction";
 
 export const StringComponent: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
@@ -70,7 +33,7 @@ export const StringComponent: React.FC = () => {
       value,
       color: ElementStates.Default,
     }));
-    reverseElement(arr, setLoader, setArrElements);
+    reverseElement(arr, setLoader, setArrElements, delay, DELAY_IN_MS);
   };
 
   return (

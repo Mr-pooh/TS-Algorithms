@@ -1,40 +1,16 @@
 import React, {
   ChangeEvent,
-  Dispatch,
   FormEventHandler,
-  SetStateAction,
 } from "react";
 import { Input } from "../ui/input/input";
 import { Button } from "../ui/button/button";
 import styles from "./fibonacci.module.css";
 import { Circle } from "../ui/circle/circle";
 import { SHORT_DELAY_IN_MS, delay } from "../../constants/delays";
-
-type TArr = Array<number>;
-
-const numItem = (i: number, arr: TArr) => {
-  if (i < 2) {
-    return 1;
-  } else {
-    return arr[i - 2] + arr[i - 1];
-  }
-};
-
-const funcFibonacci = async (
-  number: number,
-  setArrElements: Dispatch<SetStateAction<TArr>>
-) => {
-  let arr: TArr = [];
-  for (let i = 0; i <= number; i++) {
-    await delay(SHORT_DELAY_IN_MS);
-    arr.push(numItem(i, arr));
-
-    setArrElements([...arr]);
-  }
-};
+import { TArr, funcFibonacci } from "./fibonacciFunction";
 
 export const FibonacciConponent: React.FC = () => {
-  const [inputValue, setInputValue] = React.useState<string>('');
+  const [inputValue, setInputValue] = React.useState<string>("");
 
   const [loader, setLoader] = React.useState<boolean>(false);
 
@@ -51,9 +27,12 @@ export const FibonacciConponent: React.FC = () => {
   };
 
   const handleClick = () => {
-    funcFibonacci(Number(inputValue), setArrElements).then(() =>
-      setLoader(false)
-    );
+    funcFibonacci(
+      Number(inputValue),
+      setArrElements,
+      delay,
+      SHORT_DELAY_IN_MS
+    ).then(() => setLoader(false));
   };
 
   return (

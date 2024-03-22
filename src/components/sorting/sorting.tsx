@@ -1,15 +1,16 @@
-import React, { Dispatch, FC, SetStateAction, useState } from "react";
+import React, { FC, useState } from "react";
 import styles from "./sorting.module.css";
 import { RadioInput } from "../ui/radio-input/radio-input";
 import { Button } from "../ui/button/button";
 import { Direction } from "../../types/direction";
-import { ElementStates } from "../../types/element-states";
 import { Column } from "../ui/column/column";
 import { DELAY_IN_MS, delay } from "../../constants/delays";
-import { TArr, randomArr, sortSelection, sortingBuble } from "./sortingFunctions";
-
-
-
+import {
+  TArr,
+  randomArr,
+  sortSelection,
+  sortingBuble,
+} from "./sortingFunctions";
 
 export const Sorting: FC = () => {
   const [checked, setChecked] = useState<string>("выбор");
@@ -27,11 +28,11 @@ export const Sorting: FC = () => {
 
   const handleClick = (sorting: Direction) => {
     setSort(sorting);
-    if(checked === 'выбор'){
+    if (checked === "выбор") {
       sortSelection(arr, setArr, setLoad, sorting, delay, DELAY_IN_MS);
     }
-    if(checked === 'пузырёк'){
-      sortingBuble(arr, setArr, setLoad, sorting, delay, DELAY_IN_MS)
+    if (checked === "пузырёк") {
+      sortingBuble(arr, setArr, setLoad, sorting, delay, DELAY_IN_MS);
     }
   };
 
