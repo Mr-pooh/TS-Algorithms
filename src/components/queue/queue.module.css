@@ -18,7 +18,7 @@
   width: 100%;
 }
 
-.clearButton {
+.removeButton {
   display: flex;
   width: 119px;
 }
@@ -41,7 +41,7 @@
   width: 108px;
 }
 
-.circle {
+.circles {
   display: flex;
   column-gap: 16px;
   padding: 0;
