@@ -1,7 +1,4 @@
-import React, {
-  ChangeEvent,
-  FormEventHandler,
-} from "react";
+import React, { ChangeEvent, FormEventHandler } from "react";
 import { Input } from "../ui/input/input";
 import { Button } from "../ui/button/button";
 import styles from "./fibonacci.module.css";

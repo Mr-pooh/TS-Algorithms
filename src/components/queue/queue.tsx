@@ -122,7 +122,6 @@ export const Queue: React.FC = () => {
           <div className={style.addButton}>
             <Button
               text="Добавить"
-              data-testid="addBtn"
               disabled={inputValue === "" || disableButtonAdd}
               onClick={addClick}
             />
@@ -130,7 +129,6 @@ export const Queue: React.FC = () => {
           <div className={style.deleteButton}>
             <Button
               text="Удалить"
-              data-testid="deleteBtn"
               disabled={queue.isEmpty() || disableButtonDelete}
               onClick={deleteClick}
             />
@@ -139,7 +137,6 @@ export const Queue: React.FC = () => {
         <div className={style.removeButton}>
           <Button
             text="Очистить"
-            data-testid="removeBtn"
             disabled={
               (!queue.getHead() && !queue.getTail()) || disableButtonRemove
             }

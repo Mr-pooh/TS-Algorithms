@@ -1,27 +1,26 @@
 .form {
-    display: flex;
-    height: max-content;
-    max-width: 1040px;
-    flex-direction: column;
-    margin: auto;
-    row-gap: 120px;
-    align-items: center;
+  display: flex;
+  height: max-content;
+  max-width: 1040px;
+  flex-direction: column;
+  margin: auto;
+  row-gap: 120px;
+  align-items: center;
 }
 
-
-.input  {
-    display: flex;
-    flex-direction: row;
-    column-gap: 12px;
-    width: 567px;
+.input {
+  display: flex;
+  flex-direction: row;
+  column-gap: 12px;
+  width: 567px;
 }
 
 .circles {
-    display: flex;
-    list-style-type: none;
-    padding-inline-start: 0;
-    justify-content: space-evenly;
-    column-gap: 16px;
-    margin-block-start: 0;
-    margin-block-end: 0;
+  display: flex;
+  list-style-type: none;
+  padding-inline-start: 0;
+  justify-content: space-evenly;
+  column-gap: 16px;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }

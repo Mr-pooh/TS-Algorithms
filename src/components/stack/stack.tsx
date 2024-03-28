@@ -70,7 +70,6 @@ export const Stack: React.FC = () => {
           <div className={styles.addButton}>
             <Button
               text="Добавить"
-              data-testid="addBtn"
               onClick={addClick}
               disabled={inputValue === ""}
             />
@@ -78,7 +77,6 @@ export const Stack: React.FC = () => {
           <div className={styles.deleteButton}>
             <Button
               text="Удалить"
-              data-testid="deleteBtn"
               onClick={deleteClick}
               disabled={!stackArr.length}
             />
@@ -87,7 +85,6 @@ export const Stack: React.FC = () => {
         <div className={styles.clearButton}>
           <Button
             text="Очистить"
-            data-testid="removeBtn"
             onClick={clearningClick}
             disabled={!stackArr.length}
           />
