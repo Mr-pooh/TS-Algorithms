@@ -63,32 +63,6 @@ export const sortSelection = async (
   setLoader(false);
 };
 
-
-export const sortingBuble = (
-  arr: TArr[],
-  method: Direction,
-) => {
-  if (arr.length > 1) {
-    for (let i = 0; i < arr.length; i++) {
-      for (let j = 0; j < arr.length - i - 1; j++) {
-        
-        if (method === Direction.Ascending) {
-          if (arr[j].value > arr[j + 1].value) {
-            [arr[j].value, arr[j + 1].value] = [arr[j + 1].value, arr[j].value];
-          }
-        }
-        if (method === Direction.Descending) {
-          if (arr[j].value < arr[j + 1].value) {
-            [arr[j].value, arr[j + 1].value] = [arr[j + 1].value, arr[j].value];
-          }
-        }
-      }
-      return arr
-    }
-  }
-};
-
-/*
 export const sortingBuble = async (
   arr: TArr[],
   setArray: Dispatch<SetStateAction<TArr[]>>,
@@ -123,4 +97,3 @@ export const sortingBuble = async (
   }
   setLoader(false);
 };
-*/

@@ -26,32 +26,22 @@ export const Sorting: FC = () => {
     setChecked(event.target.value);
   };
 
-  const sortBuble = async (sorting: Direction) => {
-    const newArr = sortingBuble(arr, sorting)
-    console.log(newArr)
-  }
-
   const handleClick = (sorting: Direction) => {
     setSort(sorting);
     if (checked === "выбор") {
       sortSelection(arr, setArr, setLoad, sorting, delay, DELAY_IN_MS);
     }
     if (checked === "пузырёк") {
-      sortBuble(sorting)
+      sortingBuble(arr, setArr, setLoad, sorting, delay, DELAY_IN_MS);
     }
   };
 
-  React.useEffect(()=> {
-  }, [arr])
-
   const setLoading = (direction: Direction) => {
-    return sort === direction && load
-    
+    return sort === direction && load;
   };
 
   const setDisabled = (direction: Direction) => {
-    return sort !== direction && load
-    
+    return sort !== direction && load;
   };
 
   React.useEffect(() => {
@@ -68,14 +58,14 @@ export const Sorting: FC = () => {
           <RadioInput
             label="Выбор"
             value="выбор"
-            checked={checked === "выбор" ? true : false}
+            checked={checked === "выбор"}
             onChange={changeOptionValue}
             disabled={load}
           ></RadioInput>
           <RadioInput
             label="Пузырёк"
             value="пузырёк"
-            checked={checked === "пузырёк" ? true : false}
+            checked={checked === "пузырёк"}
             onChange={changeOptionValue}
             disabled={load}
           ></RadioInput>
