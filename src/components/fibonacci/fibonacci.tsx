@@ -4,7 +4,7 @@ import { Button } from "../ui/button/button";
 import styles from "./fibonacci.module.css";
 import { Circle } from "../ui/circle/circle";
 import { SHORT_DELAY_IN_MS, delay } from "../../constants/delays";
-import { getFibonacciNumbers } from "./getFibonacciNumbers";
+import { getFibonacciNumbers } from "../fibonacci-page/utils";
 import { MAX_LENGTH_LARGE, MIN_LENGTH_SMALL } from "../../constants/constants";
 import { ElementStates } from "../../types/element-states";
 
