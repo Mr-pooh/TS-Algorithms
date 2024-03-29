@@ -34,11 +34,7 @@ export const Queue: React.FC = () => {
 
   const addClick = async () => {
     if (inputValue) {
-      if (queue.getTail() === LENGTH_MEDIUM) {
-        setDisableButtonAdd(true);
-      } else {
-        setDisableButtonAdd(false);
-      }
+      setDisableButtonAdd(true)
       setInputValue("");
       queue.enqueue({ value: inputValue, color: ElementStates.Default });
       setQueue(queue);
@@ -58,6 +54,7 @@ export const Queue: React.FC = () => {
         color: ElementStates.Default,
       };
       setQueueArr([...queueArr]);
+      setDisableButtonAdd(false)
     }
   };
 
@@ -123,15 +120,17 @@ export const Queue: React.FC = () => {
           <div className={style.addButton}>
             <Button
               text="Добавить"
-              disabled={inputValue === "" || disableButtonAdd}
+              disabled={inputValue === "" || disableButtonAdd || queue.getTail() > LENGTH_MEDIUM}
               onClick={addClick}
+              isLoader={disableButtonAdd}
             />
           </div>
           <div className={style.deleteButton}>
             <Button
               text="Удалить"
-              disabled={queue.isEmpty() || disableButtonDelete}
+              disabled={queue.isEmpty() || disableButtonDelete || disableButtonAdd}
               onClick={deleteClick}
+              isLoader={disableButtonDelete}
             />
           </div>
         </section>
@@ -139,9 +138,10 @@ export const Queue: React.FC = () => {
           <Button
             text="Очистить"
             disabled={
-              (!queue.getHead() && !queue.getTail()) || disableButtonRemove
+              (!queue.getHead() && !queue.getTail()) || disableButtonAdd || disableButtonDelete
             }
             onClick={clearningClick}
+            isLoader={disableButtonRemove}
           />
         </div>
       </div>

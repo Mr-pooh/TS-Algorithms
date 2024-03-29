@@ -277,13 +277,13 @@ export const List: React.FC = () => {
             text="Добавить по индексу"
             onClick={addByIndex}
             isLoader={buttonName === ButtonName.AddByIndex && loading}
-            disabled={!inputValue || !ind || loading}
+            disabled={!inputValue || !ind || loading || Number(ind) > list.listSize() }
           />
           <Button
             text="Удалить по индексу"
             onClick={deleteByIndex}
             isLoader={buttonName === ButtonName.DeleteByIndex && loading}
-            disabled={ind === "" || loading}
+            disabled={ind === "" || loading || Number(ind) > list.listSize()-1 }
           />
         </section>
       </div>

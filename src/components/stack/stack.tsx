@@ -16,7 +16,9 @@ type TStackItem = {
 export const Stack: React.FC = () => {
   const [stackArr, setStackArr] = React.useState<TStackItem[]>([]);
   const [inputValue, setInputValue] = React.useState("");
-  const [load, setLoad] = React.useState<boolean>(false)
+  const [loadAdd, setLoadAdd] = React.useState<boolean>(false)
+  const [loadDelete, setLoadDelete] = React.useState<boolean>(false)
+  const [loadClear, setLoadClear] = React.useState<boolean>(false)
 
   const [stack] = React.useState(new StackClass<TStackItem>());
 
@@ -26,30 +28,32 @@ export const Stack: React.FC = () => {
 
   const addClick = async () => {
     if (inputValue) {
-      setLoad(true)
+      setLoadAdd(true)
       stack.push({ value: inputValue, color: ElementStates.Changing });
       setInputValue("");
       setStackArr([...stack.getElements()]);
       await delay(SHORT_DELAY_IN_MS);
       stack.change()!.color = ElementStates.Default;
       setStackArr([...stack.getElements()]);
-      setLoad(false)
+      setLoadAdd(false)
     }
   };
 
   const deleteClick = async () => {
-    setLoad(true)
+    setLoadDelete(true)
     stack.change()!.color = ElementStates.Changing;
     setStackArr([...stack.getElements()]);
     await delay(SHORT_DELAY_IN_MS);
     stack.pop();
     setStackArr([...stack.getElements()]);
-    setLoad(false)
+    setLoadDelete(false)
   };
 
   const clearningClick = () => {
+    setLoadClear(true)
     stack.clear();
     setStackArr(stack.getElements());
+    setLoadClear(false)
   };
 
   const infoPosition = (index: number, arr: TStackItem[]): string => {
@@ -77,15 +81,16 @@ export const Stack: React.FC = () => {
             <Button
               text="Добавить"
               onClick={addClick}
-              disabled={inputValue === ""}
-              isLoader={load}
+              disabled={inputValue === "" || loadDelete || loadClear}
+              isLoader={loadAdd}
             />
           </div>
           <div className={styles.deleteButton}>
             <Button
               text="Удалить"
               onClick={deleteClick}
-              disabled={!stackArr.length || load}
+              disabled={!stackArr.length || loadAdd || loadClear}
+              isLoader={loadDelete}
             />
           </div>
         </section>
@@ -93,7 +98,8 @@ export const Stack: React.FC = () => {
           <Button
             text="Очистить"
             onClick={clearningClick}
-            disabled={!stackArr.length || load}
+            disabled={!stackArr.length || loadAdd || loadDelete}
+            isLoader={loadClear}
           />
         </div>
       </div>

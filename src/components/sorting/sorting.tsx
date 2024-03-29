@@ -26,30 +26,32 @@ export const Sorting: FC = () => {
     setChecked(event.target.value);
   };
 
+  const sortBuble = async (sorting: Direction) => {
+    const newArr = sortingBuble(arr, sorting)
+    console.log(newArr)
+  }
+
   const handleClick = (sorting: Direction) => {
     setSort(sorting);
     if (checked === "выбор") {
       sortSelection(arr, setArr, setLoad, sorting, delay, DELAY_IN_MS);
     }
     if (checked === "пузырёк") {
-      sortingBuble(arr, setArr, setLoad, sorting, delay, DELAY_IN_MS);
+      sortBuble(sorting)
     }
   };
 
+  React.useEffect(()=> {
+  }, [arr])
+
   const setLoading = (direction: Direction) => {
-    if (sort === direction && load === true) {
-      return true;
-    } else {
-      return false;
-    }
+    return sort === direction && load
+    
   };
 
   const setDisabled = (direction: Direction) => {
-    if (sort !== direction && load === true) {
-      return true;
-    } else {
-      return false;
-    }
+    return sort !== direction && load
+    
   };
 
   React.useEffect(() => {

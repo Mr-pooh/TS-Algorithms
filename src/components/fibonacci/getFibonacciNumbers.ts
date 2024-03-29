@@ -1,13 +1,6 @@
-import { Dispatch, SetStateAction } from "react";
-
 export type TArr = Array<number>;
 
-export const funcFibonacci = async (
-  number: number,
-  setArrElements: Dispatch<SetStateAction<TArr>>,
-  delay: (ms: number) => Promise<void>,
-  ms: number
-) => {
+export const getFibonacciNumbers = (number: number): TArr => {
   const numItem = (i: number, arr: TArr) => {
     if (i < 2) {
       return 1;
@@ -17,9 +10,7 @@ export const funcFibonacci = async (
   };
   let arr: TArr = [];
   for (let i = 0; i <= number; i++) {
-    await delay(ms);
     arr.push(numItem(i, arr));
-
-    setArrElements([...arr]);
   }
+  return arr
 };

@@ -150,6 +150,10 @@ export class ClassesList<T> implements IClassesList<T> {
   }
 
   deleteByIndex(index: number) {
+    if (index < 0 || index > this.size) {
+      console.log("Enter a valid index");
+      return;
+    } 
     if (index === 0) return this.deleteHead();
     if (index === this.size - 1) return this.deleteTail();
     else {
