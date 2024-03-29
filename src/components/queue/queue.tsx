@@ -6,6 +6,7 @@ import { Input } from "../ui/input/input";
 import { ElementStates } from "../../types/element-states";
 import { SHORT_DELAY_IN_MS, delay } from "../../constants/delays";
 import { classQueue } from "./classQueue";
+import { LENGTH_LARGE, LENGTH_MEDIUM, MAX_LENGTH_SHORT } from "../../constants/constants";
 
 type TQueueItem = {
   value?: string;
@@ -33,7 +34,7 @@ export const Queue: React.FC = () => {
 
   const addClick = async () => {
     if (inputValue) {
-      if (queue.getTail() === 6) {
+      if (queue.getTail() === LENGTH_MEDIUM) {
         setDisableButtonAdd(true);
       } else {
         setDisableButtonAdd(false);
@@ -87,7 +88,7 @@ export const Queue: React.FC = () => {
     queue.clear();
     setInputValue("");
     setQueueArr(
-      Array.from({ length: 7 }, () => ({
+      Array.from({ length: LENGTH_LARGE }, () => ({
         value: "",
         color: ElementStates.Default,
       }))
@@ -101,7 +102,7 @@ export const Queue: React.FC = () => {
   }, [queue]);
 
   React.useEffect(() => {
-    if (inputValue !== "" && queue.getTail() < 6) {
+    if (inputValue !== "" && queue.getTail() < LENGTH_MEDIUM) {
       setDisableButtonAdd(false);
     }
   }, [inputValue, queue]);
@@ -112,7 +113,7 @@ export const Queue: React.FC = () => {
         <section className={style.inputSection}>
           <div className={style.input}>
             <Input
-              maxLength={4}
+              maxLength={MAX_LENGTH_SHORT}
               isLimitText={true}
               type="text"
               onChange={onChange}

@@ -11,6 +11,7 @@ import { Circle } from "../ui/circle/circle";
 import { DELAY_IN_MS, delay } from "../../constants/delays";
 import { ElementStates } from "../../types/element-states";
 import { TArray, reverseElement } from "./stringFunction";
+import { MAX_LENGTH_MEDIUM } from "../../constants/constants";
 
 export const StringComponent: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
@@ -42,7 +43,7 @@ export const StringComponent: React.FC = () => {
         <div className={styles.input}>
           <Input
             isLimitText={true}
-            maxLength={11}
+            maxLength={MAX_LENGTH_MEDIUM}
             value={inputValue}
             onChange={onChange}
           ></Input>

@@ -5,6 +5,7 @@ import styles from "./fibonacci.module.css";
 import { Circle } from "../ui/circle/circle";
 import { SHORT_DELAY_IN_MS, delay } from "../../constants/delays";
 import { TArr, funcFibonacci } from "./fibonacciFunction";
+import { MAX_LENGTH_LARGE, MIN_LENGTH_SMALL } from "../../constants/constants";
 
 export const FibonacciConponent: React.FC = () => {
   const [inputValue, setInputValue] = React.useState<string>("");
@@ -38,8 +39,8 @@ export const FibonacciConponent: React.FC = () => {
         <Input
           isLimitText={true}
           type="number"
-          max={19}
-          min={1}
+          max={MAX_LENGTH_LARGE}
+          min={MIN_LENGTH_SMALL}
           value={inputValue}
           onChange={onChange}
         ></Input>
@@ -47,7 +48,7 @@ export const FibonacciConponent: React.FC = () => {
           text={`Развернуть`}
           type="submit"
           disabled={
-            !inputValue || Number(inputValue) > 19 || Number(inputValue) < 1
+            !inputValue || Number(inputValue) > MAX_LENGTH_LARGE || Number(inputValue) < MIN_LENGTH_SMALL
           }
           isLoader={loader}
         ></Button>

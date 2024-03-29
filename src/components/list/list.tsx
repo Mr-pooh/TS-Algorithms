@@ -7,6 +7,7 @@ import { ArrowIcon } from "../ui/icons/arrow-icon";
 import { SHORT_DELAY_IN_MS, delay } from "../../constants/delays";
 import { ElementStates } from "../../types/element-states";
 import { ClassesList } from "./classesList";
+import { LENGTH_MEDIUM, MAX_LENGTH_SHORT, MAX_LENGTH_SMALL, MIN_LENGTH_SHORT } from "../../constants/constants";
 
 type TItem = {
   value: string;
@@ -41,7 +42,7 @@ export const List: React.FC = () => {
   const list = useMemo(
     () =>
       new ClassesList<string>(
-        Array.from({ length: 4 }, () =>
+        Array.from({ length: MAX_LENGTH_SHORT }, () =>
           Math.floor(Math.random() * 100).toString()
         )
       ),
@@ -59,7 +60,7 @@ export const List: React.FC = () => {
   };
 
   const addIntoHead = async () => {
-    if (inputValue && list.listSize() < 6) {
+    if (inputValue && list.listSize() < LENGTH_MEDIUM) {
       setButtonName(ButtonName.AddToHead);
       setLoading(true);
       setInputValueInd(0);
@@ -80,7 +81,7 @@ export const List: React.FC = () => {
   };
 
   const addIntoTail = async () => {
-    if (inputValue && list.listSize() < 6) {
+    if (inputValue && list.listSize() < LENGTH_MEDIUM) {
       setButtonName(ButtonName.AddToTail);
       setLoading(true);
       setInputValueInd(list.listSize() - 1);
@@ -221,7 +222,7 @@ export const List: React.FC = () => {
         <section className={styles.section}>
           <Input
             placeholder="Введите значение"
-            maxLength={4}
+            maxLength={MAX_LENGTH_SHORT}
             isLimitText={true}
             value={inputValue}
             onChange={onInputChange}
@@ -264,8 +265,8 @@ export const List: React.FC = () => {
           <div className={styles.input}>
             <Input
               placeholder="Введите индекс"
-              max={5}
-              min={0}
+              max={MAX_LENGTH_SMALL}
+              min={MIN_LENGTH_SHORT}
               type="number"
               value={ind}
               onChange={onIndChange}
