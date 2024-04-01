@@ -31,7 +31,7 @@ export const FibonacciConponent: React.FC = () => {
 
   const handleClick = async () => {
     setLoader(true);
-    const arr = [...getFibonacciNumbers(Number(inputValue))]
+    const arr = getFibonacciNumbers(Number(inputValue))
     const renderingFib: TElem[] = []
     for(let i = 0; i < arr.length; i++){
       await delay(SHORT_DELAY_IN_MS);
