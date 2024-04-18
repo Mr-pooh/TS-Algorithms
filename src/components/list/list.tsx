@@ -230,6 +230,7 @@ export const List: React.FC = () => {
           />
           <div className={styles.button}>
             <Button
+              data-testid="buttonAddHeadList"
               text="Добавить в head"
               onClick={addIntoHead}
               isLoader={buttonName === ButtonName.AddToHead && loading}
@@ -238,6 +239,7 @@ export const List: React.FC = () => {
           </div>
           <div className={styles.button}>
             <Button
+            data-testid="buttonAddTailList"
               text="Добавить в tail"
               onClick={addIntoTail}
               isLoader={buttonName === ButtonName.AddToTail && loading}
@@ -246,6 +248,7 @@ export const List: React.FC = () => {
           </div>
           <div className={styles.button}>
             <Button
+            data-testid="buttonDeleteHeadList"
               text="Удалить из head"
               onClick={deleteFromTheHead}
               isLoader={buttonName === ButtonName.DeleteFromTheHead && loading}
@@ -254,6 +257,7 @@ export const List: React.FC = () => {
           </div>
           <div className={styles.button}>
             <Button
+            data-testid="buttonDeleteTailList"
               text="Удалить из tail"
               onClick={deleteFromTheTail}
               isLoader={buttonName === ButtonName.DeleteFromTheTail && loading}
@@ -274,12 +278,14 @@ export const List: React.FC = () => {
             />
           </div>
           <Button
+          data-testid="buttonAddIndexList"
             text="Добавить по индексу"
             onClick={addByIndex}
             isLoader={buttonName === ButtonName.AddByIndex && loading}
             disabled={!inputValue || !ind || loading || Number(ind) > list.listSize() }
           />
           <Button
+          data-testid="buttonDeleteIndexList"
             text="Удалить по индексу"
             onClick={deleteByIndex}
             isLoader={buttonName === ButtonName.DeleteByIndex && loading}

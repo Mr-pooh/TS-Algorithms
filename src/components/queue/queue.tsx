@@ -6,7 +6,11 @@ import { Input } from "../ui/input/input";
 import { ElementStates } from "../../types/element-states";
 import { SHORT_DELAY_IN_MS, delay } from "../../constants/delays";
 import { classQueue } from "./classQueue";
-import { LENGTH_LARGE, LENGTH_MEDIUM, MAX_LENGTH_SHORT } from "../../constants/constants";
+import {
+  LENGTH_LARGE,
+  LENGTH_MEDIUM,
+  MAX_LENGTH_SHORT,
+} from "../../constants/constants";
 
 type TQueueItem = {
   value?: string;
@@ -34,7 +38,7 @@ export const Queue: React.FC = () => {
 
   const addClick = async () => {
     if (inputValue) {
-      setDisableButtonAdd(true)
+      setDisableButtonAdd(true);
       setInputValue("");
       queue.enqueue({ value: inputValue, color: ElementStates.Default });
       setQueue(queue);
@@ -54,7 +58,7 @@ export const Queue: React.FC = () => {
         color: ElementStates.Default,
       };
       setQueueArr([...queueArr]);
-      setDisableButtonAdd(false)
+      setDisableButtonAdd(false);
     }
   };
 
@@ -119,16 +123,24 @@ export const Queue: React.FC = () => {
           </div>
           <div className={style.addButton}>
             <Button
+              data-testid="btnAddQueue"
               text="Добавить"
-              disabled={inputValue === "" || disableButtonAdd || queue.getTail() > LENGTH_MEDIUM}
+              disabled={
+                inputValue === "" ||
+                disableButtonAdd ||
+                queue.getTail() > LENGTH_MEDIUM
+              }
               onClick={addClick}
               isLoader={disableButtonAdd}
             />
           </div>
           <div className={style.deleteButton}>
             <Button
+              data-testid="btnDeleteQueue"
               text="Удалить"
-              disabled={queue.isEmpty() || disableButtonDelete || disableButtonAdd}
+              disabled={
+                queue.isEmpty() || disableButtonDelete || disableButtonAdd
+              }
               onClick={deleteClick}
               isLoader={disableButtonDelete}
             />
@@ -136,9 +148,12 @@ export const Queue: React.FC = () => {
         </section>
         <div className={style.removeButton}>
           <Button
+            data-testid="btnClearQueue"
             text="Очистить"
             disabled={
-              (!queue.getHead() && !queue.getTail()) || disableButtonAdd || disableButtonDelete
+              (!queue.getHead() && !queue.getTail()) ||
+              disableButtonAdd ||
+              disableButtonDelete
             }
             onClick={clearningClick}
             isLoader={disableButtonRemove}
