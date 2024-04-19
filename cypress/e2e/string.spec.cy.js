@@ -1,4 +1,4 @@
-import { testUrl, testCirlce } from "../../src/constants/testConstant";
+import { testUrl, testCircle } from "../../src/constants/testConstant";
 
 import { DELAY_IN_MS } from "../../src/constants/delays";
 
@@ -46,7 +46,7 @@ describe("String testing", () => {
     cy.get("input").type(inputString);
     cy.get("button[type=submit]").click();
 
-    cy.get(testCirlce).each(($el, index, $list) => {
+    cy.get(testCircle).each(($el, index, $list) => {
       cy.get($list).should("have.length", inputString.length);
       cy.get($el).contains(inputString[index]);
       cy.get($el).should("have.css", "border-color", firstStepColorsArr[index]);
@@ -54,7 +54,7 @@ describe("String testing", () => {
 
     cy.wait(DELAY_IN_MS);
 
-    cy.get(testCirlce).each(($el, index, $list) => {
+    cy.get(testCircle).each(($el, index, $list) => {
       cy.get($list).should("have.length", inputString.length);
       cy.get($el).contains(inProcessString[index]);
       cy.get($el).should(
@@ -66,7 +66,7 @@ describe("String testing", () => {
 
     cy.wait(DELAY_IN_MS);
 
-    cy.get(testCirlce).each(($el, index, $list) => {
+    cy.get(testCircle).each(($el, index, $list) => {
       cy.get($list).should("have.length", inputString.length);
       cy.get($el).contains(finalString[index]);
       cy.get($el).should("have.css", "border-color", finaStepColorsArr[index]);

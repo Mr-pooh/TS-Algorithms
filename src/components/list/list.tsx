@@ -323,7 +323,7 @@ export const List: React.FC = () => {
                 </div>
               )}
             {arr.length - 1 !== index && (
-              <div className={styles.arrow}>
+              <div data-testid="arrowElement" className={styles.arrow}>
                 <ArrowIcon />
               </div>
             )}

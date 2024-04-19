@@ -1,7 +1,7 @@
 import { SHORT_DELAY_IN_MS } from "../../src/constants/delays";
 import {
   testCircleContain,
-  testCirlce,
+  testCircle,
   testUrl,
 } from "../../src/constants/testConstant";
 
@@ -21,59 +21,59 @@ describe("Queue", () => {
       });
   });
   it("correct add element", () => {
-    cy.get(testCirlce).each(($el) => {
+    cy.get(testCircle).each(($el) => {
       cy.get($el).first().should("have.css", "border-color", defaultColor);
     });
 
     cy.get("input").type(testElem);
     cy.get("[data-testid='btnAddQueue']").click();
-    cy.get(testCirlce).eq(0).should("have.css", "border-color", modifiedColor);
+    cy.get(testCircle).eq(0).should("have.css", "border-color", modifiedColor);
     cy.get(testCircleContain).eq(0).contains("head");
     cy.get(testCircleContain).eq(0).contains("tail");
     cy.wait(SHORT_DELAY_IN_MS);
-    cy.get(testCirlce).eq(0).should("have.css", "border-color", defaultColor);
+    cy.get(testCircle).eq(0).should("have.css", "border-color", defaultColor);
 
     cy.get("input").type(testElem);
     cy.get("[data-testid='btnAddQueue']").click();
-    cy.get(testCirlce).eq(1).should("have.css", "border-color", modifiedColor);
+    cy.get(testCircle).eq(1).should("have.css", "border-color", modifiedColor);
     cy.get(testCircleContain).eq(0).contains("head");
     cy.get(testCircleContain).eq(1).contains("tail");
     cy.wait(SHORT_DELAY_IN_MS);
-    cy.get(testCirlce).eq(1).should("have.css", "border-color", defaultColor);
+    cy.get(testCircle).eq(1).should("have.css", "border-color", defaultColor);
   });
   it("correct delete element", () => {
-    cy.get(testCirlce).each(($el) => {
+    cy.get(testCircle).each(($el) => {
       cy.get($el).first().should("have.css", "border-color", defaultColor);
     });
 
     cy.get("input").type(testElem);
     cy.get("[data-testid='btnAddQueue']").click();
-    cy.get(testCirlce).eq(0).should("have.css", "border-color", modifiedColor);
+    cy.get(testCircle).eq(0).should("have.css", "border-color", modifiedColor);
     cy.get(testCircleContain).eq(0).contains("head");
     cy.get(testCircleContain).eq(0).contains("tail");
     cy.wait(SHORT_DELAY_IN_MS);
-    cy.get(testCirlce).eq(0).should("have.css", "border-color", defaultColor);
+    cy.get(testCircle).eq(0).should("have.css", "border-color", defaultColor);
 
     cy.get("input").type(testElem);
     cy.get("[data-testid='btnAddQueue']").click();
-    cy.get(testCirlce).eq(1).should("have.css", "border-color", modifiedColor);
+    cy.get(testCircle).eq(1).should("have.css", "border-color", modifiedColor);
     cy.get(testCircleContain).eq(0).contains("head");
     cy.get(testCircleContain).eq(1).contains("tail");
     cy.wait(SHORT_DELAY_IN_MS);
-    cy.get(testCirlce).eq(1).should("have.css", "border-color", defaultColor);
+    cy.get(testCircle).eq(1).should("have.css", "border-color", defaultColor);
 
     cy.get("[data-testid='btnDeleteQueue']").click();
-    cy.get(testCirlce).eq(0).should("have.css", "border-color", modifiedColor);
+    cy.get(testCircle).eq(0).should("have.css", "border-color", modifiedColor);
     cy.get(testCircleContain).eq(1).contains("head");
     cy.get(testCircleContain).eq(1).contains("tail");
     cy.wait(SHORT_DELAY_IN_MS);
-    cy.get(testCirlce).eq(0).should("have.css", "border-color", defaultColor);
+    cy.get(testCircle).eq(0).should("have.css", "border-color", defaultColor);
     cy.get("[data-testid='btnDeleteQueue']").click();
-    cy.get(testCirlce).eq(1).should("have.css", "border-color", modifiedColor);
+    cy.get(testCircle).eq(1).should("have.css", "border-color", modifiedColor);
     cy.get(testCircleContain).eq(1).not("head");
     cy.get(testCircleContain).eq(1).not("tail");
     cy.wait(SHORT_DELAY_IN_MS);
-    cy.get(testCirlce).eq(1).should("have.css", "border-color", defaultColor);
+    cy.get(testCircle).eq(1).should("have.css", "border-color", defaultColor);
   });
   it("correct clear elements", () => {
     
@@ -86,7 +86,7 @@ describe("Queue", () => {
     cy.get("input").type(testElem);
     cy.get("[data-testid='btnAddQueue']").click();
     cy.get("[data-testid='btnClearQueue']").click()
-    cy.get(testCirlce).each(($el, index, $list) => {
+    cy.get(testCircle).each(($el, index, $list) => {
         expect($list).to.contain('')
     });
   });

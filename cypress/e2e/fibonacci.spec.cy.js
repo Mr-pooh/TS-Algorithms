@@ -1,4 +1,4 @@
-import { testUrl, testCirlce } from "../../src/constants/testConstant";
+import { testUrl, testCircle } from "../../src/constants/testConstant";
 import { SHORT_DELAY_IN_MS } from "../../src/constants/delays";
 
 describe("Fibonacci", () => {
@@ -18,7 +18,7 @@ describe("Fibonacci", () => {
     cy.get("button[type=submit]").click();
     for (let i = 0; i < testArr.length; i++) {
       cy.wait(SHORT_DELAY_IN_MS);
-      cy.get(testCirlce).contains(testArr[i]);
+      cy.get(testCircle).contains(testArr[i]);
     }
   });
 });

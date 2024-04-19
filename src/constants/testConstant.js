@@ -1,6 +1,6 @@
 export const testUrl = "http://localhost:3000";
 
-export const testCirlce = "[data-testid='circle']";
+export const testCircle = "[data-testid='circle']";
 
 export const testCircleContain = "[data-testid='circle-test']"
 export const testCircleTail = '[data-testid="circleTail"]'
@@ -14,3 +14,5 @@ export const buttonDeleteHeadList= '[data-testid="buttonDeleteHeadList"]'
 export const buttonDeleteTailList= '[data-testid="buttonDeleteTailList"]'
 export const buttonAddIndexList= '[data-testid="buttonAddIndexList"]'
 export const buttonDeleteIndexList= '[data-testid="buttonDeleteIndexList"]'
+
+export const testArrowElement = '[data-testid="arrowElement"]'

@@ -1,5 +1,5 @@
 import { SHORT_DELAY_IN_MS } from "../../src/constants/delays";
-import { testUrl, testCirlce } from "../../src/constants/testConstant";
+import { testUrl, testCircle } from "../../src/constants/testConstant";
 
 describe("Stack", () => {
   it("if input null to button add disabled", () => {
@@ -19,7 +19,7 @@ describe("Stack", () => {
     cy.get("[data-testid='btnAddStack']")
       .click()
       .then(() => {
-        cy.get(testCirlce).each(($el, index, $list) => {
+        cy.get(testCircle).each(($el, index, $list) => {
           cy.get($list).should("have.length", 1);
           cy.get($el).contains(testArr[index]);
           cy.get($el).should("have.css", "border-color", "rgb(210, 82, 225)");
@@ -36,10 +36,10 @@ describe("Stack", () => {
 
       cy.get("input").type(testElem);
       cy.get("[data-testid='btnAddStack']").click();
-      cy.get(testCirlce).contains(testElem);
+      cy.get(testCircle).contains(testElem);
       cy.wait(SHORT_DELAY_IN_MS);
       cy.get("[data-testid='btnDeleteStack']").click().then(()=> {
-        cy.get(testCirlce).each(($el, index, $list) => {
+        cy.get(testCircle).each(($el, index, $list) => {
             cy.get($list).should("have.length", 1);
             cy.get($el).contains(testElem);
             cy.get($el).should("have.css", "border-color", "rgb(210, 82, 225)");
@@ -58,12 +58,12 @@ describe("Stack", () => {
       cy.get("input").type(testElem);
       cy.get("[data-testid='btnAddStack']").click();
       cy.wait(SHORT_DELAY_IN_MS);
-      cy.get(testCirlce).each(($el, index, $list)=>{
+      cy.get(testCircle).each(($el, index, $list)=>{
         cy.get($list).should("have.length", 2);
             cy.get($el).contains(testArr[index]);
       })
       cy.get("[data-testid='btnClearStack'").click().then(()=> {
-        cy.get(testCirlce).should("have.length", 0)
+        cy.get(testCircle).should("have.length", 0)
       })
 
     })
