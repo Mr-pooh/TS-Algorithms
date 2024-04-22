@@ -7,6 +7,7 @@ exports[`Circle render element-react with head 1`] = `
 >
   <div
     class="text text_type_input text_color_input mb-4 absolute head element"
+    data-testid="circleHead"
   >
     <div>
       <p>
@@ -16,16 +17,20 @@ exports[`Circle render element-react with head 1`] = `
   </div>
   <div
     class="circle   default"
+    data-testid="circle"
   >
     <p
       class="text text_type_circle text_color_input letter"
+      data-testid="circleLetter"
     />
   </div>
   <p
     class="text text_type_input text_color_input mt-4 absolute index"
+    data-testid="circleIndex"
   />
   <div
     class="text text_type_input text_color_input mt-4 absolute tail30 element"
+    data-testid="circleTail"
   />
 </div>
 `;
@@ -37,19 +42,24 @@ exports[`Circle render element-react with tail 1`] = `
 >
   <div
     class="text text_type_input text_color_input mb-4 absolute head element"
+    data-testid="circleHead"
   />
   <div
     class="circle   default"
+    data-testid="circle"
   >
     <p
       class="text text_type_circle text_color_input letter"
+      data-testid="circleLetter"
     />
   </div>
   <p
     class="text text_type_input text_color_input mt-4 absolute index"
+    data-testid="circleIndex"
   />
   <div
     class="text text_type_input text_color_input mt-4 absolute tail30 element"
+    data-testid="circleTail"
   >
     <div>
       <p>
@@ -67,19 +77,24 @@ exports[`Circle render state changing 1`] = `
 >
   <div
     class="text text_type_input text_color_input mb-4 absolute head element"
+    data-testid="circleHead"
   />
   <div
     class="circle   changing"
+    data-testid="circle"
   >
     <p
       class="text text_type_circle text_color_input letter"
+      data-testid="circleLetter"
     />
   </div>
   <p
     class="text text_type_input text_color_input mt-4 absolute index"
+    data-testid="circleIndex"
   />
   <div
     class="text text_type_input text_color_input mt-4 absolute tail30 element"
+    data-testid="circleTail"
   />
 </div>
 `;
@@ -91,19 +106,24 @@ exports[`Circle render state default 1`] = `
 >
   <div
     class="text text_type_input text_color_input mb-4 absolute head element"
+    data-testid="circleHead"
   />
   <div
     class="circle   default"
+    data-testid="circle"
   >
     <p
       class="text text_type_circle text_color_input letter"
+      data-testid="circleLetter"
     />
   </div>
   <p
     class="text text_type_input text_color_input mt-4 absolute index"
+    data-testid="circleIndex"
   />
   <div
     class="text text_type_input text_color_input mt-4 absolute tail30 element"
+    data-testid="circleTail"
   />
 </div>
 `;
@@ -115,19 +135,24 @@ exports[`Circle render state modified 1`] = `
 >
   <div
     class="text text_type_input text_color_input mb-4 absolute head element"
+    data-testid="circleHead"
   />
   <div
     class="circle   modified"
+    data-testid="circle"
   >
     <p
       class="text text_type_circle text_color_input letter"
+      data-testid="circleLetter"
     />
   </div>
   <p
     class="text text_type_input text_color_input mt-4 absolute index"
+    data-testid="circleIndex"
   />
   <div
     class="text text_type_input text_color_input mt-4 absolute tail30 element"
+    data-testid="circleTail"
   />
 </div>
 `;
@@ -139,21 +164,26 @@ exports[`Circle render with head 1`] = `
 >
   <div
     class="text text_type_input text_color_input mb-4 absolute head string"
+    data-testid="circleHead"
   >
     s
   </div>
   <div
     class="circle   default"
+    data-testid="circle"
   >
     <p
       class="text text_type_circle text_color_input letter"
+      data-testid="circleLetter"
     />
   </div>
   <p
     class="text text_type_input text_color_input mt-4 absolute index"
+    data-testid="circleIndex"
   />
   <div
     class="text text_type_input text_color_input mt-4 absolute tail30 element"
+    data-testid="circleTail"
   />
 </div>
 `;
@@ -165,21 +195,26 @@ exports[`Circle render with index 1`] = `
 >
   <div
     class="text text_type_input text_color_input mb-4 absolute head element"
+    data-testid="circleHead"
   />
   <div
     class="circle   default"
+    data-testid="circle"
   >
     <p
       class="text text_type_circle text_color_input letter"
+      data-testid="circleLetter"
     />
   </div>
   <p
     class="text text_type_input text_color_input mt-4 absolute index"
+    data-testid="circleIndex"
   >
     2
   </p>
   <div
     class="text text_type_input text_color_input mt-4 absolute tail60 element"
+    data-testid="circleTail"
   />
 </div>
 `;
@@ -191,21 +226,26 @@ exports[`Circle render with letter 1`] = `
 >
   <div
     class="text text_type_input text_color_input mb-4 absolute head element"
+    data-testid="circleHead"
   />
   <div
     class="circle   default"
+    data-testid="circle"
   >
     <p
       class="text text_type_circle text_color_input letter"
+      data-testid="circleLetter"
     >
       3
     </p>
   </div>
   <p
     class="text text_type_input text_color_input mt-4 absolute index"
+    data-testid="circleIndex"
   />
   <div
     class="text text_type_input text_color_input mt-4 absolute tail30 element"
+    data-testid="circleTail"
   />
 </div>
 `;
@@ -217,19 +257,24 @@ exports[`Circle render with prop isSmall true 1`] = `
 >
   <div
     class="text text_type_input text_color_input mb-4 absolute head element"
+    data-testid="circleHead"
   />
   <div
     class="circle  small default"
+    data-testid="circle"
   >
     <p
       class="text text_type_circle text_color_input letter"
+      data-testid="circleLetter"
     />
   </div>
   <p
     class="text text_type_input text_color_input mt-4 absolute index"
+    data-testid="circleIndex"
   />
   <div
     class="text text_type_input text_color_input mt-4 absolute tail30 element"
+    data-testid="circleTail"
   />
 </div>
 `;
@@ -241,19 +286,24 @@ exports[`Circle render with tail 1`] = `
 >
   <div
     class="text text_type_input text_color_input mb-4 absolute head element"
+    data-testid="circleHead"
   />
   <div
     class="circle   default"
+    data-testid="circle"
   >
     <p
       class="text text_type_circle text_color_input letter"
+      data-testid="circleLetter"
     />
   </div>
   <p
     class="text text_type_input text_color_input mt-4 absolute index"
+    data-testid="circleIndex"
   />
   <div
     class="text text_type_input text_color_input mt-4 absolute tail30 string"
+    data-testid="circleTail"
   >
     S
   </div>
@@ -267,19 +317,24 @@ exports[`Circle render without letter 1`] = `
 >
   <div
     class="text text_type_input text_color_input mb-4 absolute head element"
+    data-testid="circleHead"
   />
   <div
     class="circle   default"
+    data-testid="circle"
   >
     <p
       class="text text_type_circle text_color_input letter"
+      data-testid="circleLetter"
     />
   </div>
   <p
     class="text text_type_input text_color_input mt-4 absolute index"
+    data-testid="circleIndex"
   />
   <div
     class="text text_type_input text_color_input mt-4 absolute tail30 element"
+    data-testid="circleTail"
   />
 </div>
 `;
