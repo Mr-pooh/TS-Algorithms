@@ -7,7 +7,12 @@ import { ArrowIcon } from "../ui/icons/arrow-icon";
 import { SHORT_DELAY_IN_MS, delay } from "../../constants/delays";
 import { ElementStates } from "../../types/element-states";
 import { ClassesList } from "./classesList";
-import { LENGTH_MEDIUM, MAX_LENGTH_SHORT, MAX_LENGTH_SMALL, MIN_LENGTH_SHORT } from "../../constants/constants";
+import {
+  LENGTH_MEDIUM,
+  MAX_LENGTH_SHORT,
+  MAX_LENGTH_SMALL,
+  MIN_LENGTH_SHORT,
+} from "../../constants/constants";
 
 type TItem = {
   value: string;
@@ -239,7 +244,7 @@ export const List: React.FC = () => {
           </div>
           <div className={styles.button}>
             <Button
-            data-testid="buttonAddTailList"
+              data-testid="buttonAddTailList"
               text="Добавить в tail"
               onClick={addIntoTail}
               isLoader={buttonName === ButtonName.AddToTail && loading}
@@ -248,7 +253,7 @@ export const List: React.FC = () => {
           </div>
           <div className={styles.button}>
             <Button
-            data-testid="buttonDeleteHeadList"
+              data-testid="buttonDeleteHeadList"
               text="Удалить из head"
               onClick={deleteFromTheHead}
               isLoader={buttonName === ButtonName.DeleteFromTheHead && loading}
@@ -257,7 +262,7 @@ export const List: React.FC = () => {
           </div>
           <div className={styles.button}>
             <Button
-            data-testid="buttonDeleteTailList"
+              data-testid="buttonDeleteTailList"
               text="Удалить из tail"
               onClick={deleteFromTheTail}
               isLoader={buttonName === ButtonName.DeleteFromTheTail && loading}
@@ -278,18 +283,22 @@ export const List: React.FC = () => {
             />
           </div>
           <Button
-          data-testid="buttonAddIndexList"
+            data-testid="buttonAddIndexList"
             text="Добавить по индексу"
             onClick={addByIndex}
             isLoader={buttonName === ButtonName.AddByIndex && loading}
-            disabled={!inputValue || !ind || loading || Number(ind) > list.listSize() }
+            disabled={
+              !inputValue || !ind || loading || Number(ind) > list.listSize()
+            }
           />
           <Button
-          data-testid="buttonDeleteIndexList"
+            data-testid="buttonDeleteIndexList"
             text="Удалить по индексу"
             onClick={deleteByIndex}
             isLoader={buttonName === ButtonName.DeleteByIndex && loading}
-            disabled={ind === "" || loading || Number(ind) > list.listSize()-1 }
+            disabled={
+              ind === "" || loading || Number(ind) > list.listSize() - 1
+            }
           />
         </section>
       </div>

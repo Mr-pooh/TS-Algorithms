@@ -12,6 +12,8 @@ import {
   testCircleTail,
   testCircle,
   testUrl,
+  buttonDeleteHeadList,
+  buttonDeleteTailList,
 } from "../../src/constants/testConstant";
 
 describe("List", () => {
@@ -20,6 +22,7 @@ describe("List", () => {
   const changingColor = "rgb(127, 224, 81)";
 
   const testElem = "test";
+  const testIndex = 2;
 
   beforeEach(() => {
     cy.visit(`${testUrl}/list`);
@@ -96,9 +99,112 @@ describe("List", () => {
         cy.get($el).should("not.have.text", "head");
       }
     });
-    cy.wait(SHORT_DELAY_IN_MS)
+    cy.wait(SHORT_DELAY_IN_MS);
+    cy.get(testCircle).first().should("have.css", "border-color", defaultColor);
+  });
+  it("correct add element in tail", () => {
+    cy.get('input[placeholder="Введите значение"]').type(testElem);
+    cy.get(buttonAddTailList).click();
+    cy.get(testCircleContain).each(($el, index, $list) => {
+      cy.get($list).should("have.length", 5);
+    });
+    cy.get(testCircle).eq(3).should("have.css", "border-color", modifiedColor);
+    cy.get(testCircle).eq(3).should("have.text", testElem);
+    cy.get(testCircleTail).eq(3).should("not.have.text", "tail");
+    cy.wait(SHORT_DELAY_IN_MS);
+
+    cy.get(testCircle).eq(4).should("have.css", "border-color", changingColor);
+    cy.get(testCircle).eq(4).should("have.text", testElem);
+    cy.get(testCircleTail).each(($el, index, $list) => {
+      if (index === $list.length - 1) {
+        cy.get($el).should("have.text", "tail");
+      } else {
+        cy.get($el).should("not.have.text", "tail");
+      }
+    });
+  });
+  it("correct add element on index", () => {
+    cy.get('input[placeholder="Введите значение"]').type(testElem);
+    cy.get('input[placeholder="Введите индекс"]').type(testIndex);
+    cy.get(buttonAddIndexList).click();
+
+    cy.get(testCircle).each(($el, index, $list) => {
+      if (index <= testIndex) {
+        cy.get($el).should("have.css", "border-color", modifiedColor);
+        cy.wait(SHORT_DELAY_IN_MS);
+      }
+    });
     cy.get(testCircle)
-      .first()
-      .should("have.css", "border-color", defaultColor);
+      .eq(testIndex)
+      .should("have.css", "border-color", changingColor);
+    cy.get(testCircle).eq(testIndex).should("have.text", testElem);
+    cy.wait(SHORT_DELAY_IN_MS);
+    cy.get(testCircle).each(($el, index, $list) => {
+      cy.get($list).should("have.length", 5);
+      cy.get($el).should("have.css", "border-color", defaultColor);
+    });
+  });
+  it("correct delete element in head", () => {
+    cy.get(buttonDeleteHeadList).click();
+    cy.get(testCircle).each(($el, index, $list) => {
+      cy.get($list).should("have.length", 5);
+      if (index === 0) {
+        cy.get($el).should("have.css", "border-color", modifiedColor);
+      } else if (index === 1) {
+        cy.get($el).should("have.text", "");
+      }
+    });
+    cy.wait(SHORT_DELAY_IN_MS);
+    cy.get(testCircle).each(($el, index, $list) => {
+      cy.get($list).should("have.length", 3);
+      cy.get($el).should("have.css", "border-color", defaultColor);
+    });
+    cy.get(testCircleContain).each(($el, index) => {
+      if (index === 0) cy.get($el).contains("head");
+    });
+  });
+  it("correct delete element in tail", () => {
+    cy.get(buttonDeleteTailList).click();
+    cy.get(testCircle).each(($el, index, $list) => {
+      cy.get($list).should("have.length", 5);
+      if (index === $list.length - 2) {
+        cy.get($el).should("have.css", "border-color", modifiedColor);
+      } else if (index === $list.length - 1) {
+        cy.get($el).should("have.text", "");
+      }
+    });
+    cy.wait(SHORT_DELAY_IN_MS);
+    cy.get(testCircle).each(($el, index, $list) => {
+      cy.get($list).should("have.length", 3);
+      cy.get($el).should("have.css", "border-color", defaultColor);
+    });
+    cy.get(testCircleContain).each(($el, index, $list) => {
+      if (index === $list.length - 1) {
+        cy.get($el).contains("tail");
+      }
+    });
+  });
+  it("correct delete element on index", () => {
+    cy.get('input[placeholder="Введите индекс"]').type(testIndex);
+    cy.get(buttonDeleteIndexList).click();
+    cy.get(testCircle).each(($el, index, $list) => {
+      cy.get($list).should("have.length", 4);
+      if (index <= testIndex) {
+        cy.get($el).should("have.css", "border-color", modifiedColor);
+        cy.wait(SHORT_DELAY_IN_MS);
+      }
+    });
+    cy.get(testCircle)
+      .eq(testIndex + 1)
+      .should("have.text", "");
+    cy.get(testCircle)
+      .eq(testIndex)
+      .should("have.css", "border-color", modifiedColor);
+    cy.wait(SHORT_DELAY_IN_MS);
+    cy.get(testCircle).each(($el, index, $list) => {
+      cy.get($list).should("have.length", 3);
+
+      cy.get($el).should("have.css", "border-color", defaultColor);
+    });
   });
 });

@@ -76,7 +76,6 @@ describe("Queue", () => {
     cy.get(testCircle).eq(1).should("have.css", "border-color", defaultColor);
   });
   it("correct clear elements", () => {
-    
     cy.get("input").type(testElem);
     cy.get("[data-testid='btnAddQueue']").click();
     cy.wait(SHORT_DELAY_IN_MS);
@@ -85,9 +84,9 @@ describe("Queue", () => {
     cy.wait(SHORT_DELAY_IN_MS);
     cy.get("input").type(testElem);
     cy.get("[data-testid='btnAddQueue']").click();
-    cy.get("[data-testid='btnClearQueue']").click()
+    cy.get("[data-testid='btnClearQueue']").click();
     cy.get(testCircle).each(($el, index, $list) => {
-        expect($list).to.contain('')
+      expect($list).to.contain("");
     });
   });
 });

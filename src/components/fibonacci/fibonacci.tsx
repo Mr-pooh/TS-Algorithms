@@ -11,7 +11,7 @@ import { ElementStates } from "../../types/element-states";
 type TElem = {
   value: number;
   color: ElementStates;
-}
+};
 
 export const FibonacciConponent: React.FC = () => {
   const [inputValue, setInputValue] = React.useState<string>("");
@@ -31,15 +31,14 @@ export const FibonacciConponent: React.FC = () => {
 
   const handleClick = async () => {
     setLoader(true);
-    const arr = getFibonacciNumbers(Number(inputValue))
-    const renderingFib: TElem[] = []
-    for(let i = 0; i < arr.length; i++){
+    const arr = getFibonacciNumbers(Number(inputValue));
+    const renderingFib: TElem[] = [];
+    for (let i = 0; i < arr.length; i++) {
       await delay(SHORT_DELAY_IN_MS);
-      renderingFib.push({value: arr[i], color: ElementStates.Default})
-      setArrElements([...renderingFib])
-      
+      renderingFib.push({ value: arr[i], color: ElementStates.Default });
+      setArrElements([...renderingFib]);
     }
-    
+
     setLoader(false);
   };
 
@@ -70,7 +69,11 @@ export const FibonacciConponent: React.FC = () => {
           arrElements.map((item, index) => {
             return (
               <li key={index} className={styles.circle}>
-                <Circle letter={`${item.value}`} state={item.color} index={index} />
+                <Circle
+                  letter={`${item.value}`}
+                  state={item.color}
+                  index={index}
+                />
               </li>
             );
           })}
